@@ -2,17 +2,16 @@
 
 from db.eshop import cursor
 
-def getUsersCount():
-  cursor.execute("SELECT count(*) as count FROM users")
-  (usersCount,) = cursor.fetchone()  
+def getCount(table):
+  cursor.execute(f"SELECT count(*) as count FROM {table}")
+  (count,) = cursor.fetchone()  
 
-  return usersCount
+  return count
 
-def getShopsCount():
-  cursor.execute("SELECT count(*) as count FROM shops")
-  (shopsCount,) = cursor.fetchone()  
-
-  return shopsCount
-
-print(f"[+] Users Count = {getUsersCount()}")
-print(f"[+] Shops Count = {getShopsCount()}")
+print(f"[+] Users = {getCount('users')}")
+print(f"[+] Shops = {getCount('shops')}")
+print(f"[+] Items = {getCount('items')}")
+print(f"[+] Carts = {getCount('carts')}")
+print(f"[+] Comments = {getCount('itemsComments')}")
+print(f"[+] Shops Rates = {getCount('shopsRates')}")
+print(f"[+] Items Rates = {getCount('itemsRates')}")
