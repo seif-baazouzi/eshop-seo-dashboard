@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-shop SEO Dashboard</title>
+  <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+  <div class="container">
+    {% for field in fields %}
+      <div class="box">
+        <p>{{ field }}</p>
+        <h1>{{ log[field] }}</h1>
+      </div>
+    {% endfor %}
+  </div>
+</body>
+</html>
