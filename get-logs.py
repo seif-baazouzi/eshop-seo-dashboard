@@ -8,4 +8,11 @@ def getUsersCount():
 
   return usersCount
 
+def getShopsCount():
+  cursor.execute("SELECT count(*) as count FROM shops")
+  (shopsCount,) = cursor.fetchone()  
+
+  return shopsCount
+
 print(f"[+] Users Count = {getUsersCount()}")
+print(f"[+] Shops Count = {getShopsCount()}")
