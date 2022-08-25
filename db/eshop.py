@@ -1,5 +1,4 @@
 import os
-import sys
 import psycopg2
 
 database = os.environ["ESHOP_DATABASE"]
@@ -13,4 +12,4 @@ try:
   print("[+] Connected to eshop database")
 except (psycopg2.DatabaseError) as err:
   print("Error on connection to the eshop database", err)
-  sys.exit(1)
+  exit(1)

@@ -5,4 +5,6 @@ export ESHOP_USERNAME="postgres"
 export ESHOP_PASSWORD="password"
 export ESHOP_HOSTNAME="172.17.0.1"
 
+export DB_HOSTNAME="172.17.0.4"
+
 python -B get-logs.py
