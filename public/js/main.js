@@ -1,7 +1,20 @@
 // chart
-const myChart = echarts.init(document.getElementById("main"))
+const chartContainer = document.getElementById("main")
+
+const myChart = echarts.init(chartContainer)
 myChart.setOption(options)
 window.onresize = () => myChart.resize()
+
+if(Object.keys(options).length === 0) {
+  chartContainer.innerText = "There no data for this month"
+  chartContainer.style = `
+    font-size: 3rem;
+    padding: 8rem 3rem 5rem;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1.25;
+  `
+}
 
 // numbers animation
 
