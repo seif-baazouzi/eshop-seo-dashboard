@@ -18,11 +18,11 @@
     {% endfor %}
   </div>
 
-  <form id="month-form">
+  <form id="month-form" class="center">
     <input type="month" id="month-input" name="month" value="{{ month }}" />
   </form>
 
-  <div id="main"></div>
+  <div id="main" class="center"></div>
 
   <script>
     const options = {{ options | safe }}
