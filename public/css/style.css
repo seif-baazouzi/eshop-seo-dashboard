@@ -117,3 +117,10 @@ body {
   margin: 1rem 0 3rem;
   aspect-ratio: 2 / 1;
 }
+
+#month-input {
+  right: 1rem;
+  font-size: 1rem;
+  position: absolute;
+  color: var(--dark-gray);
+}

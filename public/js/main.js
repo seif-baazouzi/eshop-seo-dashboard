@@ -13,3 +13,13 @@ numbers.forEach(num => {
     setTimeout(() => num.innerText = value, 10*value)
   }
 })
+
+// select date
+
+const monthForm  = document.getElementById("month-form")
+const monthInput = document.getElementById("month-input")
+
+monthInput.addEventListener("change", () => {
+  console.log("ok");
+  monthForm.submit()
+})

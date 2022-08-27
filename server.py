@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from flask import Flask
+from flask import Flask, request
 
 from controllers.home import homeController
 
@@ -8,7 +8,7 @@ app = Flask(__name__, static_url_path="/public", static_folder="/home/seif/proje
 
 @app.get("/")
 def index():
-  return homeController()
+  return homeController(request)
 
 if __name__ == "__main__":
   app.run(debug=True, port=8080, host="0.0.0.0")

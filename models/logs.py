@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from db.mongo import db
 
 def getLastLog():
@@ -10,11 +8,9 @@ def getLastLog():
   
   return None
 
-def getMonthLogs():
-  today = datetime.now()
-
-  startingDate = f"01-{today.month}-${today.year}"
-  endingDate   = f"31-{today.month}-${today.year}"
+def getMonthLogs(month):
+  startingDate = f"{month}-01"
+  endingDate   = f"{month}-31"
 
   logs = list(db.logs.find({ "date": { "$gte": startingDate, "$lte": endingDate } }))
 

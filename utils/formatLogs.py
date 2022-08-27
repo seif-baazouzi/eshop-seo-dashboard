@@ -2,7 +2,7 @@ import json
 
 def formatLogs(logs):
   if len(logs) == 0:
-    return
+    return "{}"
   
   data = {}
   labels = []
