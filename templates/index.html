@@ -13,7 +13,7 @@
     {% for field in fields %}
       <div class="box">
         <p>{{ field }}</p>
-        <h1>{{ log[field] }}</h1>
+        <h1 number-anim="{{ log[field] }}">0</h1>
       </div>
     {% endfor %}
   </div>
