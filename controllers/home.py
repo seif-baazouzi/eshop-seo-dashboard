@@ -1,10 +1,13 @@
 from datetime import datetime
-from flask import render_template
+from flask import render_template, session, redirect
 
 from models.logs import getLastLog, getMonthLogs
 from utils.formatLogs import formatLogs
 
 def homeController(request):
+  if not session.get("username"):
+    return redirect("/login")
+
   queryParams = request.args.to_dict()  
   if "month" in queryParams:
     month = queryParams["month"]

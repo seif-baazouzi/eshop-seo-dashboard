@@ -1,10 +1,13 @@
-from flask import render_template, redirect
+from flask import render_template, redirect, session
 
 from models.login import getUser
 from utils.hashing import verify
 
 class LoginController:
   def get(self, request):
+    if session.get("username"):
+      return redirect("/")
+
     return render_template("login.html")
 
   def post(self, request):
@@ -31,6 +34,8 @@ class LoginController:
 
     if len(errors):
       return render_template("login.html", username=username, errors=errors)
+
+    session["username"] = username
 
     return redirect("/")
 
