@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from flask import Flask, request
+from flask import Flask, request, session, redirect
 from flask_session import Session
 
 from controllers.home import homeController
@@ -21,6 +21,11 @@ def login():
     return loginController.post(request)
   else:
     return loginController.get(request)
+
+@app.get("/logout")
+def logout():
+  session["username"] = None
+  return redirect("/")
 
 if __name__ == "__main__":
   app.run(debug=True, port=8080, host="0.0.0.0")
