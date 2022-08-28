@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-shop SEO Dashboard</title>
+  <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+  {% include "navbar.html" %}
+
+  <div class="setting-container center">
+    <form action="/settings?form=update-username" method="POST">
+      <h3>Update username</h3>
+      <div class="input-box">
+        <label for="username">New Username</label>
+        <input type="text" id="username" name="username" value="{{ username }}">
+        {% if "username" in usernameErrors %}
+          <span>{{ usernameErrors["username"] }}</span>
+        {% endif %}
+      </div>
+      <div class="input-box">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+        {% if "password" in usernameErrors %}
+          <span>{{ usernameErrors["password"] }}</span>
+        {% endif %}
+      </div>
+      <button>Submit</button>
+    </form>
+  </div>
+
+  <div class="separator"></div>
+
+  <div class="setting-container center">
+    <form action="/settings?form=update-password" method="POST">
+      <h3>Update password</h3>
+      <div class="input-box">
+        <label for="username">Old Password</label>
+        <input type="password" id="oldPassword" name="oldPassword">
+        {% if "oldPassword" in passwordErrors %}
+          <span>{{ passwordErrors["oldPassword"] }}</span>
+        {% endif %}
+      </div>
+      <div class="input-box">
+        <label for="newPassword">New Password</label>
+        <input type="password" id="newPassword" name="newPassword">
+        {% if "newPassword" in passwordErrors %}
+          <span>{{ passwordErrors["newPassword"] }}</span>
+        {% endif %}
+      </div>
+      <button>Submit</button>
+    </form>
+  </div>
+</body>
+</html>
