@@ -10,7 +10,7 @@ def homeController(request):
     month = queryParams["month"]
   else:
     today = datetime.now()
-    month = f"{today.year}-{today.month}"
+    month = f"{today.year}-{str(today.month).rjust(2, '0')}"
 
   log = getLastLog()
   logs = getMonthLogs(month)

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | E-shop SEO Dashboard</title>
+  <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+  <div class="login-form">
+    <form action="/login" method="POST">
+      <h1>Welcome</h1>
+      <div class="input-box">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" value="{{ username }}">
+        {% if "username" in errors %}
+          <span>{{ errors["username"] }}</span>
+        {% endif %}
+      </div>
+      <div class="input-box">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+        {% if "password" in errors %}
+          <span>{{ errors["password"] }}</span>
+        {% endif %}
+      </div>
+      <button>Login</button>
+    </form>
+  </div>
+</body>
+</html>

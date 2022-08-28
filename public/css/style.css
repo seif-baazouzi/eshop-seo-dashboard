@@ -44,6 +44,31 @@ img {
   width: 100%;
 }
 
+button {
+  width: 100%;  
+  font-size: .6rem;
+  font-weight: bold;
+  line-height: 1.5;
+  
+  padding: .5em 1.25em;
+  border-radius: .5em;
+  display: inline-block;
+  border: .125em solid var(--blue);
+
+  color: var(--light-gray);
+  background-color: var(--blue);
+
+  transition: .3s ease-out;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 1;
+  color: var(--light-gray);
+  background-color: var(--dark-gray);
+  border: .125em solid var(--dark-gray);
+}
+
 body {
   color: var(--black);
   font-family: "Catamaran";
@@ -70,7 +95,7 @@ body {
   html { font-size: 1.4rem }
 }
 
-/* styles */
+/* dashboard styles */
 
 .center {
   width: 100%;
@@ -135,4 +160,58 @@ form {
   font-size: 1rem;
   position: absolute;
   color: var(--dark-gray);
+}
+
+/* login styles */
+
+.login-form {
+  width: 100%;
+  min-height: 100vh;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form form {
+  width: 100%;
+  max-width: 480px;
+}
+
+.login-form form h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.input-box {
+  width: 100%;
+  margin-bottom: .5rem;
+}
+
+.input-box :is(label, input, span) {
+  width: 100%;
+  display: block;
+  font-size: .75rem;
+}
+
+.input-box label {
+  font-weight: bold;
+}
+
+.input-box input {
+  padding: .5em;
+  border-radius: .25em;
+  background-color: var(--light-gray);
+  border: .125em solid var(--light-gray);
+}
+
+.input-box input:focus {
+  border: .125em solid var(--blue);
+}
+
+.input-box span {
+  color: var(--red);
+  font-weight: bold;
+  font-size: .6rem;
 }
