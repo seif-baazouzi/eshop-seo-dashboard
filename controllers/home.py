@@ -22,6 +22,7 @@ def homeController(request):
     "index.html",
     log=log,
     month=month,
+    page="home",
     options=formatLogs(logs),
     fields=[ "users", "shops", "items", "carts", "shopsRates", "itemsRates" ]
   )

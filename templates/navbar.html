@@ -1,0 +1,10 @@
+<nav>
+  <a href="/" class="logo">Dashboard</a>
+  <ul>
+    <li>
+      <a href="/" class="{{ 'active' if page == 'home' else '' }}">Home</a>
+      <a href="/settings" class="{{ 'active' if page == 'settings' else '' }}">Settings</a>
+      <a href="/logout">Logout</a>
+    </li>
+  </ul>
+</nav>
