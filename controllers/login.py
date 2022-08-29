@@ -1,42 +1,28 @@
 from flask import render_template, redirect, session
 
-from models.login import getUser
-from utils.hashing import verify
+from validation.login import validateLogin
 
 class LoginController:
-  def get(self, request):
-    if session.get("username"):
-      return redirect("/")
+  def __init__(self, request):
+    self.request = request
+  
+  def render(self):
+    if self.request.method == "POST":
+      return self.post()
+    else:
+      return self.get()
 
+  def get(self):
     return render_template("login.html")
 
-  def post(self, request):
-    errors = {}
+  def post(self):
+    username = self.request.form["username"]
+    password = self.request.form["password"]
 
-    username = request.form["username"] 
-    password = request.form["password"] 
-
-    user = getUser(username)
-
-    if not username:
-      errors["username"] = "Must not be empty"
-    elif not user:
-      errors["username"] = "User does not exist"
-
-    if not password:
-      errors["password"] = "Must not be empty"
-
-    if len(errors):
-      return render_template("login.html", username=username, errors=errors)
-
-    if not verify(password, user["password"]):
-      errors["password"] = "Wrong password"
-
+    errors = validateLogin(username, password)
     if len(errors):
       return render_template("login.html", username=username, errors=errors)
 
     session["username"] = username
 
     return redirect("/")
-
-loginController = LoginController()

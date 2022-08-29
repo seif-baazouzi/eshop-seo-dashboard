@@ -3,8 +3,8 @@
 from flask import Flask, request, session, redirect
 from flask_session import Session
 
-from controllers.home import homeController
-from controllers.login import loginController
+from controllers.home import HomeController
+from controllers.login import LoginController
 from controllers.settings import SettingsController
 
 app = Flask(__name__, static_url_path="/public", static_folder="/home/seif/projects/e-shop/seo-dashboard/public")
@@ -14,29 +14,21 @@ Session(app)
 
 @app.get("/")
 def index():
-  return homeController(request)
+  if not session.get("username"):
+    return redirect("/login")
+  else:
+    return HomeController(request).render()
 
 @app.route("/settings", methods=[ "GET", "POST" ])
 def settings():
-  queryParams = request.args.to_dict()
-
-  if "form" in queryParams and request.method == "POST":
-    form = queryParams["form"]
-
-    if form == "update-username":
-      return SettingsController().updateUsername(request)
-
-    if form == "update-password":
-      return SettingsController().updatePassword(request)
-
-  return SettingsController().get()
+  if not session.get("username"):
+    return redirect("/login")
+  else:
+    return SettingsController(request).render()
 
 @app.route("/login", methods=[ "GET", "POST" ])
 def login():
-  if request.method == "POST":
-    return loginController.post(request)
-  else:
-    return loginController.get(request)
+  return LoginController(request).render()
 
 @app.get("/logout")
 def logout():
